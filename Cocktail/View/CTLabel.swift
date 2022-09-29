@@ -18,16 +18,16 @@ class CTLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    init(textAlignment: NSTextAlignment, fontSize: CGFloat, weight: UIFont.Weight, textColor: UIColor) {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+        self.font = UIFont.systemFont(ofSize: fontSize, weight: weight)
+        self.textColor = textColor
         configure()
     }
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        textColor = .systemPurple
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.90
         numberOfLines = 0

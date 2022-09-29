@@ -21,12 +21,19 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Margarita"
+        configureViewController()
         configureCollectionView()
         configureDataSource()
-        
-        NetworkManager.shared.getCoctail(for: title!) { result in
-            
+        getCocktail()
+    }
+    
+    func configureViewController() {
+        title = "Margarita"
+    }
+
+    func getCocktail() {
+        NetworkManager.shared.getCoctail(for: title!) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let cocktails):
                 print(cocktails)
@@ -37,11 +44,11 @@ class MainViewController: UIViewController {
             }
         }
     }
-
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds,collectionViewLayout: UIHelper.createThreeColumnLayout(in: view))
         collectionView.register(MainCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.delegate = self
         collectionView.backgroundColor = .systemYellow
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,4 +73,14 @@ class MainViewController: UIViewController {
     }
     
 }
-
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let destVC = DetailViewController()
+        let navController = UINavigationController(rootViewController: destVC)
+        destVC.titleLabel.text = cocktails[indexPath.row].strDrink
+        destVC.imageUrl = cocktails[indexPath.row].strDrinkThumb
+        present(navController,animated: true)
+        
+    }
+}
