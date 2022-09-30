@@ -10,7 +10,7 @@ import UIKit
 class MainCell: UICollectionViewCell {
 
     var cocktailImageView = CTImageView(frame: .zero)
-    var cocktailLabel = CTLabel(textAlignment: .center, fontSize: 14,weight: .bold,textColor: .systemPurple)
+    var cocktailLabel = CTLabel(textAlignment: .center, fontSize: 14,weight: .bold,textColor: .black)
     
     var bodyText = ""
     
