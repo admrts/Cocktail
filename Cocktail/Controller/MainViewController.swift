@@ -80,6 +80,21 @@ extension MainViewController: UICollectionViewDelegate {
         let navController = UINavigationController(rootViewController: destVC)
         destVC.titleLabel.text = cocktails[indexPath.row].strDrink
         destVC.imageUrl = cocktails[indexPath.row].strDrinkThumb
+        destVC.instructionsText = cocktails[indexPath.row].strInstructions
+        destVC.ingredientText1 = cocktails[indexPath.row].strIngredient1 ?? ""
+        destVC.ingredientText2 = cocktails[indexPath.row].strIngredient2 ?? ""
+        destVC.ingredientText3 = cocktails[indexPath.row].strIngredient3 ?? ""
+        destVC.ingredientText4 = cocktails[indexPath.row].strIngredient4 ?? ""
+        destVC.ingredientText5 = cocktails[indexPath.row].strIngredient5 ?? ""
+        destVC.ingredientText6 = cocktails[indexPath.row].strIngredient6 ?? ""
+        destVC.ingredientText7 = cocktails[indexPath.row].strIngredient7 ?? ""
+        destVC.measureText1 = cocktails[indexPath.row].strMeasure1 ?? ""
+        destVC.measureText2 = cocktails[indexPath.row].strMeasure2 ?? ""
+        destVC.measureText3 = cocktails[indexPath.row].strMeasure3 ?? ""
+        destVC.measureText4 = cocktails[indexPath.row].strMeasure4 ?? ""
+        destVC.measureText5 = cocktails[indexPath.row].strMeasure5 ?? ""
+        destVC.measureText6 = cocktails[indexPath.row].strMeasure6 ?? ""
+        destVC.measureText7 = cocktails[indexPath.row].strMeasure7 ?? ""
         present(navController,animated: true)
         
     }

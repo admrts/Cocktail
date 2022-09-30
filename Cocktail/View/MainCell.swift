@@ -12,6 +12,8 @@ class MainCell: UICollectionViewCell {
     var cocktailImageView = CTImageView(frame: .zero)
     var cocktailLabel = CTLabel(textAlignment: .center, fontSize: 14,weight: .bold,textColor: .systemPurple)
     
+    var bodyText = ""
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,6 +26,7 @@ class MainCell: UICollectionViewCell {
     func set(cocktail: Drinks, indexPath: Int) {
         cocktailLabel.text = cocktail.strDrink
         cocktailImageView.downloadImage(urlString: cocktail.strDrinkThumb)
+        bodyText = cocktail.strDrinkThumb
     }
     
     private func configure() {
